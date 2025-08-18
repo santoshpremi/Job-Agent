@@ -1,8 +1,8 @@
 # Job Agent
 
-AI-powered job search using agent architecture with planning, tools, and execution.
+AI-powered job search agent using advanced agent architecture with planning, tools, and intelligent execution. Built with Node.js, Express, and modern AI providers.
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 # Install dependencies
@@ -12,51 +12,114 @@ npm install
 cp .env.example .env
 # Edit .env with your API keys
 
-# Run Job Agent
-npm run step5
-
-# Start web interface
+# Start the web interface
 npm start
 ```
 
-## Features
+## ✨ Features
 
-- 🤖 **Agent Architecture**: Uses `_steps` and `tools` pattern
-- 🔍 **Web Search**: SerpAPI integration for job discovery
-- 📊 **Data Extraction**: AI-powered job information parsing
-- 📁 **Export Options**: TXT, CSV, Excel, PDF formats
-- 🌐 **Web Interface**: Beautiful UI with workflow visualization
+- 🤖 **Intelligent Agent Architecture**: Uses `_steps` and `tools` pattern for structured job searching
+- 🔍 **Advanced Web Search**: SerpAPI integration with intelligent filtering
+- 📊 **Smart Data Extraction**: AI-powered job information parsing with quality control
+- 🎯 **Content Filtering**: Automatically excludes non-job content (Reddit, Quora, etc.)
+- 📁 **Multiple Export Formats**: TXT, CSV, Excel, PDF with clean filenames
+- 🌐 **Professional Web Interface**: Modern UI with real-time workflow visualization
+- 📋 **Search History**: View and download previous job searches
+- 🔄 **LLM Fallback System**: OpenRouter → Groq with intelligent provider switching
 
-## Steps to Talk
+## 🛠️ Available Tools
 
-```bash
-npm run step0    # LLM integration
-npm run step1    # Conditional logic
-npm run step2    # Tool usage
-npm run step3    # Code refactoring
-npm run step4    # Planning and execution
-npm run step5    # Job Agent (main)
-```
+- **`searchGoogle`** - SerpAPI-powered job search with intelligent filtering
+- **`browseWeb`** - Web scraping tool for detailed job page analysis
+- **`addTodos`** - Task management for job search workflow
+- **`markTodoDone`** - Progress tracking
+- **`checkTodos`** - View current tasks
+- **`checkGoalDone`** - LLM-powered goal completion validation
+- **`searchJobs`** - Comprehensive job search orchestration
 
-## Environment Variables
-
-```bash
-OPENAI_API_KEY=your_openai_key
-SERP_API_KEY=your_serpapi_key
-OPENROUTER_API_KEY=your_openrouter_key
-PORT=3000
-```
-
-## Project Structure
+## 🏗️ Project Structure
 
 ```
 src/
 ├── _steps/          # Agent workflow steps
+│   ├── step0-llm.js        # LLM integration demo
+│   ├── step1-condition.js  # Conditional logic demo
+│   ├── step2-tool.js       # Tool usage demo
+│   ├── step3-refactor.js   # Code refactoring demo
+│   └── step4-planning.js   # Planning and execution demo
 ├── tools/           # Available tools
-├── utils/           # Utilities (AI, file export)
-└── server.js        # Web server
+│   ├── searchGoogle.js     # Job search with SerpAPI
+│   ├── browseWeb.js        # Web scraping tool
+│   ├── todoList.js         # Task management
+│   ├── llmJudge.js         # Goal validation
+│   └── index.js            # Tool registry
+├── utils/           # Utilities
+│   ├── ai.js               # LLM provider management
+│   └── fileExport.js       # Export functionality
+└── server.js        # Express web server
 ```
 
-## License
+## 🔧 Environment Variables
+
+```bash
+# Required
+SERP_API_KEY=your_serpapi_key
+PORT=3000
+
+# AI Providers (at least one required)
+OPENROUTER_API_KEY=your_openrouter_key
+GROQ_API_KEY=your_groq_key
+```
+
+## 🎯 How It Works
+
+1. **Planning Phase**: Agent creates a structured plan for job search
+2. **Search Execution**: Uses SerpAPI to find relevant job postings
+3. **Content Filtering**: Intelligently filters out non-job content
+4. **Data Extraction**: Parses job information with AI assistance
+5. **Quality Control**: Validates results and excludes low-quality data
+6. **Export & Storage**: Saves results in multiple formats with clean filenames
+
+## 📊 Data Quality Features
+
+- **Smart Filtering**: Excludes social media, advice sites, and aggregator pages
+- **Content Analysis**: Detects and filters non-job content patterns
+- **Company Mapping**: Maps job sites to readable company names
+- **Location Extraction**: Intelligent location parsing from titles and snippets
+- **Clean Filenames**: Generates short, meaningful filenames (e.g., `software_engineer_2025-08-18.txt`)
+
+## 🌐 Web Interface
+
+- **Search Configuration**: Job title, location, remote preference, count
+- **Real-time Workflow**: Visual agent progress tracking
+- **Results Display**: Clean table format with job details
+- **Search History**: View and download previous searches
+- **Export Options**: Direct download in CSV, Excel, PDF formats
+
+## 🚀 Usage Examples
+
+```bash
+# Start the web interface
+npm start
+
+# Access the interface at http://localhost:3000
+
+# Use the search form to find jobs:
+# - Job Title: "Software Engineer"
+# - Location: "San Francisco, CA"
+# - Remote: Yes/No
+# - Count: Number of jobs to find
+```
+
+## 🔍 Supported Job Sites
+
+- LinkedIn, Indeed, Glassdoor, Monster
+- CareerBuilder, ZipRecruiter, SimplyHired
+- Dice, Built In SF, AngelList
+- GitHub, Stack Overflow, Amazon Jobs
+- German sites: Hays, EnglishJobs, GermanTechJobs
+- And many more...
+
+## 📝 License
 
 MIT
