@@ -1,7 +1,7 @@
 // Step 3: Refactored Tool System and Organization with Active Tool Usage
 // This demonstrates how tools are organized and actively used in a coordinated workflow
 import { z } from 'zod'
-import { zodResponseFormat } from 'openai/helpers/zod';
+// Removed OpenAI dependency - using free LLM alternatives (OpenRouter/Groq)
 import tools from '../tools/index.js';
 import { completeWithTools } from '../utils/ai.js';
 
@@ -82,7 +82,7 @@ async function main() {
     console.log("\n🤖 Now trying LLM tool calling...");
     const completion = await completeWithTools({
       messages: [{ role: "developer", content: prompt }],
-      model: "gpt-4o",
+      model: "meta-llama/llama-3.1-8b-instruct",  // Updated to free model
       tool_choice: "auto",
       tools: [tools.searchGoogleToolConfig],
       store: false

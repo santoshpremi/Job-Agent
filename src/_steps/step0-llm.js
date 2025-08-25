@@ -8,17 +8,18 @@ async function main() {
   console.log("=".repeat(60));
   
   console.log("\n📋 This step demonstrates:");
-  console.log("1. How multiple LLM providers are integrated");
-  console.log("2. Smart fallback system (OpenRouter → OpenAI → Groq)");
+  console.log("1. How LLM providers are automatically detected");
+  console.log("2. Smart provider type detection (URL+Key vs Key-only)");
   console.log("3. Provider availability caching");
   console.log("4. Automatic model selection for best performance");
   
   // Check provider status
   console.log("\n🔍 Checking LLM Provider Status:");
   const status = getProviderStatus();
-  console.log("OpenRouter:", status.openrouter ? "✅ Available" : "❌ Unavailable");
-  console.log("OpenAI:", status.openai ? "✅ Available" : "❌ Unavailable");
-  console.log("Groq:", status.groq ? "✅ Available" : "❌ Unavailable");
+  console.log("LLM Provider:", status.llm ? "✅ Available" : "❌ Unavailable");
+  if (status.llm) {
+    console.log("Provider Type:", status.clientType || "Unknown");
+  }
   console.log("Best Available:", status.bestAvailable || "None");
   
   // Test text generation with smart fallback

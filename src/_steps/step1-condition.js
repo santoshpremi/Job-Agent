@@ -1,7 +1,7 @@
 // Step 1: LLM as Judge - Response Validation System
 // This demonstrates how the agent system validates responses using LLM judgment
 import { z } from 'zod'
-import { zodResponseFormat } from 'openai/helpers/zod';
+// Removed OpenAI dependency - using free LLM alternatives (OpenRouter/Groq)
 import { generateText } from '../utils/ai.js';
 import { checkGoalDone } from '../tools/llmJudge.js';
 

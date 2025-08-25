@@ -1,7 +1,7 @@
 // Step 2: Tool Calling and Integration System
 // This demonstrates how the agent system uses tools to accomplish tasks
 import { z } from 'zod'
-import { zodResponseFormat } from 'openai/helpers/zod';
+// Removed OpenAI dependency - using free LLM alternatives (OpenRouter/Groq)
 import { completeWithTools } from '../utils/ai.js';
 import { searchGoogle, searchGoogleToolConfig } from '../tools/searchGoogle.js';
 import { addTodos, addTodosToolConfig } from '../tools/todoList.js';
@@ -31,7 +31,7 @@ async function main() {
     // Use the agent system with tool calling
     const completion = await completeWithTools({
       messages: [{ role: "developer", content: prompt }],
-      model: "gpt-4o",
+      model: "meta-llama/llama-3.1-8b-instruct",  // Updated to free model
       tool_choice: "auto",
       tools: [searchGoogleToolConfig, addTodosToolConfig],
       store: false

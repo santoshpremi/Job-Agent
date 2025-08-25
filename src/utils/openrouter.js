@@ -1,51 +1,76 @@
 import OpenAI from "openai";
 
+// Store OpenRouter settings in memory
+let openrouterApiKey = '';
+let openrouterBaseURL = "https://openrouter.ai/api/v1";
+
 // Initialize OpenRouter client
 let openrouter = null;
-try {
-  openrouter = new OpenAI({
-    baseURL: "https://openrouter.ai/api/v1",
-    apiKey: process.env.OPENROUTER_API_KEY,
-    defaultHeaders: {
-      "HTTP-Referer": "http://localhost:3000",
-      "X-Title": "Job Agent"
-    }
-  });
-} catch (error) {
-  console.log("⚠️  OpenRouter not available:", error.message);
+
+// Function to update OpenRouter settings
+export function updateOpenRouterSettings(apiKey, baseURL) {
+  if (!apiKey) {
+    console.log("❌ No API key provided for OpenRouter");
+    openrouter = null;
+    return;
+  }
+  
+  if (!baseURL) {
+    console.log("❌ OpenRouter requires a URL - please provide llmProviderUrl in settings");
+    openrouter = null;
+    return;
+  }
+  
+  openrouterApiKey = apiKey;
+  openrouterBaseURL = baseURL;
+  
+  try {
+    openrouter = new OpenAI({
+      baseURL: openrouterBaseURL,
+      apiKey: openrouterApiKey,
+      defaultHeaders: {
+        "HTTP-Referer": "http://localhost:3000",
+        "X-Title": "Job Agent"
+      }
+    });
+    console.log("✅ OpenRouter client initialized");
+  } catch (error) {
+    console.log("❌ Failed to initialize OpenRouter client:", error.message);
+    openrouter = null;
+  }
 }
 
-// Model recommendations for different use cases
+// Model recommendations for different use cases (FREE alternatives only)
 const modelRecommendations = {
   tool_calling: [
-    "openai/gpt-4o-mini",
-    "openai/gpt-4o",
     "anthropic/claude-3.5-sonnet",
-    "meta-llama/llama-3.1-8b-instruct"
+    "meta-llama/llama-3.1-8b-instruct",
+    "microsoft/phi-3-mini-4k-instruct",
+    "google/gemma-2-9b-it"
   ],
   text_generation: [
-    "openai/gpt-4o-mini",
-    "openai/gpt-oss-20b:free",
     "meta-llama/llama-3.1-8b-instruct",
-    "microsoft/phi-3-mini-4k-instruct"
+    "microsoft/phi-3-mini-4k-instruct",
+    "google/gemma-2-9b-it",
+    "nousresearch/nous-hermes-2-mixtral-8x7b-dpo"
   ],
   job_extraction: [
-    "openai/gpt-4o-mini",
     "anthropic/claude-3.5-sonnet",
     "meta-llama/llama-3.1-8b-instruct",
-    "openai/gpt-oss-20b:free"
+    "microsoft/phi-3-mini-4k-instruct",
+    "google/gemma-2-9b-it"
   ]
 };
 
 export async function isAvailable() {
-  if (!openrouter || !process.env.OPENROUTER_API_KEY) {
+  if (!openrouter || !openrouterApiKey) {
     return false;
   }
   
   try {
-    // Test with a simple completion
+    // Test with a simple completion using free model
     const response = await openrouter.chat.completions.create({
-      model: "openai/gpt-oss-20b:free",
+      model: "meta-llama/llama-3.1-8b-instruct",
       messages: [{ role: "user", content: "Hello" }],
       max_tokens: 10
     });
@@ -94,8 +119,8 @@ export async function getBestModel(useCase = 'general') {
     }
   }
   
-  // Fallback to a known working model
-  return "openai/gpt-oss-20b:free";
+  // Fallback to a known working free model
+  return "meta-llama/llama-3.1-8b-instruct";
 }
 
 export async function generateText(prompt, model = null) {

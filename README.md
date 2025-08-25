@@ -8,12 +8,14 @@ AI-powered job search agent using advanced agent architecture with planning, too
 # Install dependencies
 npm install
 
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your API keys
-
 # Start the web interface
 npm start
+
+# Open http://localhost:3000 in your browser
+# Go to Settings panel and enter your API keys:
+# - SerpAPI Key for job search
+# - OpenRouter API Key for LLM access
+# - Groq API Key (optional, as fallback)
 ```
 
 ## ✨ Features
@@ -59,17 +61,20 @@ src/
 └── server.js        # Express web server
 ```
 
-## 🔧 Environment Variables
+## 🔧 Configuration
 
-```bash
-# Required
-SERP_API_KEY=your_serpapi_key
-PORT=3000
+The application no longer requires a `.env` file. All configuration is done through the web interface:
 
-# AI Providers (at least one required)
-OPENROUTER_API_KEY=your_openrouter_key
-GROQ_API_KEY=your_groq_key
-```
+1. **Start the application**: `npm start`
+2. **Open the web interface**: http://localhost:3000
+3. **Go to Settings panel** (right sidebar)
+4. **Enter your API keys**:
+   - **SerpAPI Key**: Required for job search functionality
+   - **OpenRouter API Key**: Required for LLM access
+   - **Groq API Key**: Optional, used as fallback if OpenRouter fails
+5. **Click "Save Settings"** to apply changes
+
+**Note**: Settings are stored in memory and will reset when the server restarts.
 
 ## 🎯 How It Works
 
