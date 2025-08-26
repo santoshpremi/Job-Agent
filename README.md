@@ -1,8 +1,8 @@
-# Job Agent
+# Kath Agent
 
 AI-powered job search agent using advanced agent architecture with planning, tools, and intelligent execution. Built with Node.js, Express, and modern AI providers.
 
-![Job Agent Interface](/public/assets/homepage.png)
+![Kath Agent Interface](/public/assets/homepage.png)
 
 ## 🚀 Quick Start
 
