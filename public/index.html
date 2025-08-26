@@ -12,34 +12,151 @@
       }
 
       /* Import Google Fonts for better typography */
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap");
+
+      :root {
+        --primary-color: #2563eb;
+        --primary-dark: #082F49;
+        --secondary-color: #64748b;
+        --accent-color: #3b82f6;
+        --success-color: #22c55e;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --background-light: #f8fafc;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --border-color: #e2e8f0;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+      }
 
       /* Base typography system */
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, "Helvetica Neue", Arial, sans-serif;
         font-weight: 400;
-        font-size: 0.85rem;
+        font-size: 0.875rem;
         line-height: 1.5;
-        color: #212529;
+        color: var(--text-primary);
+        background: var(--background-light);
+        min-height: 100vh;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-      }
-
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
-        background: #f8f9fa;
-        min-height: 100vh;
-        color: #1a1a1a;
-        line-height: 1.4;
-        font-size: 13px;
       }
 
       .app-container {
         display: flex;
         height: 100vh;
         overflow: hidden;
+        background: var(--background-light);
+      }
+
+      /* Main content area */
+      .main-content {
+        flex: 1;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: visible;
+        background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+      }
+
+      .search-section {
+        width: 100%;
+        max-width: 1200px;
+        padding: 24px;
+        margin-bottom: 24px;
+        background: white;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+      }
+
+      .search-form {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        align-items: start;
+      }
+
+      .search-inputs {
+        display: contents;
+      }
+
+      .search-btn {
+        width: auto;
+        min-width: 120px;
+        margin-left: auto;
+      }
+
+      .table-container {
+        width: 100%;
+        max-width: 1200px;
+        overflow-y: auto;
+        max-height: calc(100vh - 240px);
+        background: white;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+      }
+
+      .agent-workflow {
+        margin: 10px 0 20px;
+        display: none;
+        width: 100%;
+        background: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+
+      .agent-workflow h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .workflow-step {
+        margin-bottom: 12px;
+      }
+
+      /* Company Logo */
+      .company-logo {
+        padding: 10px;
+        background: white;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px;
+      }
+
+      .logo-image {
+        width: 35px;
+        height: auto;
+        display: block;
+      }
+
+      .logo-text {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #082F49;
+        font-family: 'Poppins', 'Montserrat', sans-serif;
+        text-transform: capitalize;
+        letter-spacing: -0.2px;
+        background: linear-gradient(45deg, #082F49, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       /* Left Sidebar - History */
@@ -90,8 +207,8 @@
           Roboto, "Helvetica Neue", Arial, sans-serif;
         margin: 0 0 3px 0;
         color: #1a1a1a;
-        font-size: 0.75rem;
-        font-weight: 600;
+        font-size: 0.7rem;
+        font-weight: 500;
         line-height: 1.2;
         letter-spacing: -0.01em;
       }
@@ -169,7 +286,201 @@
         display: block;
       }
 
-      .download-btn {
+      .action-btn {
+        display: inline-block;
+        padding: 4px 8px;
+        background-color: #4a90e2;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+      
+      .action-btn:hover {
+        background-color: #357abd;
+      }
+
+      /* Enhanced Styles */
+      .form-group {
+        margin: 0;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        font-family: "Inter", sans-serif;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        font-size: 0.925rem;
+        font-family: "Inter", sans-serif;
+        color: var(--text-primary);
+        background: white;
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      .search-btn {
+        width: auto;
+        padding: 8px 16px;
+        background: linear-gradient(45deg, var(--primary-dark), var(--primary-color));
+        color: white;
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 500;
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: var(--shadow-sm);
+        height: 36px;
+        align-self: flex-end;
+        margin-top: 24px;
+      }
+
+      .search-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      }
+
+      .search-btn:active {
+        transform: translateY(0);
+      }
+
+      .results-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-family: "Inter", sans-serif;
+      }
+
+      .results-table th,
+      .results-table td {
+        padding: 14px 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .results-table th {
+        background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .results-table tr:hover {
+        background-color: #f8fafc;
+      }
+
+      .results-table td {
+        font-size: 0.925rem;
+        color: var(--text-primary);
+        line-height: 1.5;
+      }
+
+      /* Workflow Steps Enhancement */
+      .workflow-step {
+        background: white;
+        border-radius: var(--radius-md);
+        padding: 16px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-color);
+      }
+
+      .workflow-step.active {
+        border-color: var(--primary-color);
+        background: linear-gradient(to right, white, #f0f9ff);
+        box-shadow: var(--shadow-md);
+      }
+
+      .workflow-step.completed {
+        border-color: var(--success-color);
+        background: linear-gradient(to right, white, #f0fdf4);
+      }
+
+      .step-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        background: #f1f5f9;
+        border: 2px solid var(--border-color);
+      }
+
+      .step-icon.active {
+        color: white;
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      .step-icon.completed {
+        color: white;
+        background: var(--success-color);
+        border-color: var(--success-color);
+      }
+
+      .step-content h4 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .step-content p {
+        margin: 4px 0 0;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+            .history-viewer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 10px;
+        background-color: #f8f9fa;
+      }
+
+      .history-viewer-header h2 {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #495057;
+        margin: 0;
+      }
+            .download-btn {
         display: block;
         width: 100%;
         padding: 8px 12px;
@@ -992,7 +1303,12 @@
     <div class="app-container">
       <!-- Left Sidebar - History -->
       <div class="left-sidebar">
-        <h2>History</h2>
+        <div class="company-logo">
+          <div class="logo-container">
+            <img src="/assets/kathagent.png" alt="Kath Agent Logo" class="logo-image">
+            <span class="logo-text">Kath agent</span>
+          </div>
+        </div>
         <div id="historyList">
           <!-- History items will be populated here -->
         </div>
@@ -1001,39 +1317,40 @@
       <!-- Main Content Area -->
       <div class="main-content">
         <div class="search-section">
-          <h2>🔍 Search Configuration</h2>
           <form id="searchForm" class="search-form">
-            <div class="form-group">
-              <label for="query">Job Title/Keywords</label>
-              <input type="text" id="query" name="query" value="" required />
-            </div>
-            <div class="form-group">
-              <label for="location">Location</label>
-              <input
-                type="text"
-                id="location"
-                name="location"
-                value=""
-                required
-              />
-            </div>
-            <div class="form-group full-width">
-              <label for="remote">Remote Option</label>
-              <select id="remote" name="remote">
-                <option value="false">No Preference</option>
-                <option value="true">Remote Only</option>
-              </select>
-            </div>
-            <div class="form-group full-width">
-              <label for="count">Number of Jobs</label>
-              <input
-                type="number"
-                id="count"
-                name="count"
-                value="10"
-                min="1"
-                max="100"
-              />
+            <div class="search-inputs">
+              <div class="form-group">
+                <label for="query">Job Title/Keywords</label>
+                <input type="text" id="query" name="query" value="ai engineer" required />
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  value="frankfurt"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="remote">Remote Option</label>
+                <select id="remote" name="remote">
+                  <option value="false">No Preference</option>
+                  <option value="true">Remote Only</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="count">Number of Jobs</label>
+                <input
+                  type="number"
+                  id="count"
+                  name="count"
+                  value="10"
+                  min="1"
+                  max="100"
+                />
+              </div>
             </div>
             <button type="submit" class="search-btn" id="searchBtn">
               Start Search
@@ -1054,7 +1371,7 @@
         </div>
 
         <div class="agent-workflow" id="agentWorkflow">
-          <h2>🤖 Agent Workflow</h2>
+          <h2>Agent Workflow</h2>
 
           <div class="workflow-step" id="step1">
             <div class="step-icon pending" id="icon1">1</div>
@@ -1100,11 +1417,7 @@
         <div class="status-message" id="statusMessage"></div>
 
         <div class="results-section" id="resultsSection">
-          <div class="job-count" id="jobCount"></div>
-          <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Agent is working on your job search...</p>
-          </div>
+          <div class="loading" id="loading" style="display: none;"></div>
           <div class="table-container">
             <table class="results-table" id="resultsTable">
               <thead>
@@ -1845,17 +2158,23 @@
           count: parseInt(formData.get("count")),
         };
 
+        // Clear any previous history viewing state
+        const allHistoryItems = document.querySelectorAll(".history-item");
+        allHistoryItems.forEach((item) => item.classList.remove("viewing"));
+        
         await performJobSearch(searchData);
       }
 
       // Perform job search
       async function performJobSearch(searchData) {
         try {
-          // Show workflow
+          // Hide history viewer if it's open
+          document.getElementById("historyViewer").style.display = "none";
+          
+          // Show workflow and results section
           document.getElementById("agentWorkflow").style.display = "block";
-          document.getElementById("resultsSection").className =
-            "results-section processing";
-          document.getElementById("loading").style.display = "block";
+          document.getElementById("resultsSection").style.display = "block";
+          document.getElementById("resultsSection").className = "results-section";
           document.getElementById("resultsTable").style.display = "none";
 
           // Reset workflow steps
@@ -1968,39 +2287,52 @@
 
       // Display results
       function displayResults(jobs) {
-        document.getElementById("agentWorkflow").style.display = "none";
-        document.getElementById("resultsSection").className =
-          "results-section complete";
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("resultsTable").style.display = "table";
+        // Keep workflow visible for a moment before showing results
+        setTimeout(() => {
+          // Update the last workflow step to completed
+          const step5 = document.getElementById('step5');
+          const icon5 = document.getElementById('icon5');
+          if (step5 && icon5) {
+            step5.classList.remove('active');
+            step5.classList.add('completed');
+            icon5.classList.remove('active');
+            icon5.classList.add('completed');
+          }
 
-        const jobCount = document.getElementById("jobCount");
-        jobCount.textContent = `🎯 Found ${jobs.length} Jobs`;
+          // After a short delay, switch to results view
+          setTimeout(() => {
+            document.getElementById("agentWorkflow").style.display = "none";
+            document.getElementById("resultsSection").className = "results-section complete";
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("resultsTable").style.display = "table";
 
-        const tbody = document.getElementById("resultsBody");
-        tbody.innerHTML = jobs
-          .map(
-            (job, index) => `
-              <tr>
-                <td>${index + 1}</td>
-                <td>${job.company || "N/A"}</td>
-                <td>${job.jobTitle || "N/A"}</td>
-                <td>${job.companyAddress || "N/A"}</td>
-                <td>${job.remoteOnsite || "N/A"}</td>
-                <td>${job.languageRequirements || "N/A"}</td>
-                <td>${job.requirements || "N/A"}</td>
-                <td>${job.postedDate || "N/A"}</td>
-                <td>
-                  <a href="${
-                    job.url || "#"
-                  }" target="_blank" style="color: #4facfe; text-decoration: none;">
-                    🔗 Apply
-                  </a>
-                </td>
-              </tr>
-            `
-          )
-          .join("");
+
+
+            const tbody = document.getElementById("resultsBody");
+            tbody.innerHTML = jobs
+              .map(
+                (job, index) => `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${job.company || "N/A"}</td>
+                    <td>${job.jobTitle || "N/A"}</td>
+                    <td>${job.companyAddress || "N/A"}</td>
+                    <td>${job.remoteOnsite || "N/A"}</td>
+                    <td>${job.languageRequirements || "N/A"}</td>
+                    <td>${job.requirements || "N/A"}</td>
+                    <td>${job.postedDate || "N/A"}</td>
+                    <td>
+                      ${job.url && job.url !== 'N/A' 
+                        ? `<a href="${job.url}" target="_blank" class="action-btn">Apply</a>` 
+                        : 'N/A'
+                      }
+                    </td>
+                  </tr>
+                `
+              )
+              .join("");
+          }, 1000); // Wait 1 second before showing results
+        }, 500); // Wait 0.5 seconds to show completion state
       }
 
       // Export functions
@@ -2077,6 +2409,7 @@
                     <th>Work Type</th>
                     <th>Technologies</th>
                     <th>Posted Date</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2091,6 +2424,12 @@
                       <td>${job.remoteOnsite || "N/A"}</td>
                       <td>${job.languageRequirements || "N/A"}</td>
                       <td>${job.postedDate || "N/A"}</td>
+                      <td>
+                        ${job.url && job.url !== 'N/A' 
+                          ? `<a href="${job.url}" target="_blank" class="action-btn">🔗 Apply</a>` 
+                          : 'N/A'
+                        }
+                      </td>
                     </tr>
                   `
                     )
@@ -2138,6 +2477,8 @@
               } else if (line.includes("💻 Technologies:")) {
                 job.languageRequirements =
                   line.split("💻 Technologies:")[1]?.trim() || "N/A";
+              } else if (line.includes("🔗 URL:")) {
+                job.url = line.split("🔗 URL:")[1]?.trim() || "N/A";
               } else if (line.includes("📅 Posted:")) {
                 job.postedDate = line.split("📅 Posted:")[1]?.trim() || "N/A";
               }
@@ -2201,12 +2542,20 @@
 
       // Close history viewer
       function closeHistoryViewer() {
+        // Hide all history related elements
         document.getElementById("historyViewer").style.display = "none";
         document.getElementById("agentWorkflow").style.display = "none";
+        
+        // Clear table headers by hiding the results table
+        document.getElementById("resultsTable").style.display = "none";
+        
+        // Show clean results section
         document.getElementById("resultsSection").style.display = "block";
+        document.getElementById("resultsSection").className = "results-section";
+        
         // Reset the header title
-        document.getElementById("historyViewerTitle").textContent =
-          "History Viewer";
+        document.getElementById("historyViewerTitle").textContent = "History Viewer";
+        
         // Remove highlighting from all history items
         const allHistoryItems = document.querySelectorAll(".history-item");
         allHistoryItems.forEach((item) => item.classList.remove("viewing"));
